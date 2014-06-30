@@ -9,6 +9,7 @@ try {
   gitRoot = execSync('git rev-parse --show-toplevel').toString().trim();
 } catch(e) {
   console.error("Not a git repository, nothing to remove");
+  process.exit();
 }
 
 // compare existing and out precommit
