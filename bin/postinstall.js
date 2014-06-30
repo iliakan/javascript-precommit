@@ -10,8 +10,8 @@ var gitRoot;
 try {
   gitRoot = execSync('git rev-parse --show-toplevel').toString().trim();
 } catch(e) {
-  console.error("Not a git repository");
-  process.exit(1);
+  console.error("Not a git repository, hook is not installed.");
+  process.exit();
 }
 
 var sourcePath, destPath;
