@@ -22,8 +22,8 @@ destPath = path.join(gitRoot, '.git', 'hooks', 'pre-commit');
 if (fs.existsSync(destPath)) {
   console.error("Error: file already exists: " + destPath);
   console.error("Cowardly refusing to overwrite.");
-  console.error("Please review " + destPath + " and merge it with " + srcPath + " manually ");
-  process.exit(1);
+  console.error("Please review " + destPath + " and merge it with " + sourcePath + " manually ");
+  process.exit();
 }
 
 console.log('Creating .git/hooks/pre-commit...');
