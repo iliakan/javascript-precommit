@@ -1,0 +1,26 @@
+#!/usr/bin/env node 
+
+var execSync = require('child_process').execSync;
+var path = require('path');
+var fs = require('fs');
+
+var gitRoot;
+try {
+  gitRoot = execSync('git rev-parse --show-toplevel').toString().trim();
+} catch(e) {
+  console.error("Not a git repository");
+  process.exit(1);
+}
+
+var packageJson = JSON.parse(fs.readFileSync(path.join(gitRoot, 'package.json')));
+var cmd = packageJson.precommit;
+
+console.log('running pre-commit checks...');
+
+try {
+  execSync(cmd, { cwd: gitRoot });
+  console.log("OK");
+} catch(e) {
+  console.log(e.stdout.toString());
+  process.exit(1);
+}

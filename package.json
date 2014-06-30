@@ -1,0 +1,25 @@
+{
+  "name": "javascript-precommit",
+  "description": "Installs git precommit hook for running checks & lints before git commit. Inspired by https://github.com/nlf/precommit-hook",
+  "version": "0.0.1",
+  "bin": {
+    "pre-commit": "./bin/pre-commit"
+  },
+  "scripts": {
+    "postinstall": "./bin/postinstall.js",
+    "uninstall": "./bin/uninstall.js"
+  },
+  "engines": {
+    "node": ">=0.11.13"
+  },
+  "engineStrict": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iliakan/javascript-precommit.git"
+  },
+  "author": "Ilya Kantor and other contributors listed in git repo",
+  "license": "CC BY-NC-SA 3.0",
+  "bugs": {
+    "url": "https://github.com/iliakan/javascript-precommit/issues"
+  }
+}
