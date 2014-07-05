@@ -14,7 +14,13 @@ try {
 
 // compare existing and out precommit
 var gitHookPreCommitPath = path.join(gitRoot, '.git', 'hooks', 'pre-commit');
-var stat1 = fs.statSync(gitHookPreCommitPath);
+try {
+  var stat1 = fs.statSync(gitHookPreCommitPath);
+} catch(e) {
+  console.log("Pre-commit was removed manually");
+  process.exit();
+}
+
 var stat2 = fs.statSync(path.join(__dirname, 'pre-commit'));
 
 if (stat1.size != stat2.size) {
