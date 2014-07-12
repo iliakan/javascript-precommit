@@ -15,7 +15,7 @@ try {
 var packageJson = JSON.parse(fs.readFileSync(path.join(gitRoot, 'package.json')));
 var cmd = packageJson.precommit;
 
-console.log('running pre-commit checks...');
+console.log('running pre-commit: ' + cmd);
 
 try {
   execSync(cmd, { cwd: gitRoot });
@@ -24,3 +24,4 @@ try {
   console.log(e.stdout.toString());
   process.exit(1);
 }
+

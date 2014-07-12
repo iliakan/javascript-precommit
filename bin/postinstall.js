@@ -27,6 +27,12 @@ if (fs.existsSync(destPath)) {
 }
 
 console.log('Creating .git/hooks/pre-commit...');
-fs.writeFileSync(destPath, fs.readFileSync(sourcePath));
+
+try {
+  fs.mkdirSync(path.dirname(destPath));
+} catch(e) {}
+
+var sourceContent = fs.readFileSync(sourcePath);
+fs.writeFileSync(destPath, sourceContent);
 fs.chmodSync(destPath, '755');
 

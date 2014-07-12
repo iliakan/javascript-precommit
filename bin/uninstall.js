@@ -17,14 +17,14 @@ var gitHookPreCommitPath = path.join(gitRoot, '.git', 'hooks', 'pre-commit');
 try {
   var stat1 = fs.statSync(gitHookPreCommitPath);
 } catch(e) {
-  console.log("Pre-commit was removed manually");
+  console.log("Pre-commit hook was removed manually");
   process.exit();
 }
 
 var stat2 = fs.statSync(path.join(__dirname, 'pre-commit'));
 
 if (stat1.size != stat2.size) {
-  console.error("Found pre-commit, but size is different, cowardly refusing to remove.");
+  console.error("Found pre-commit hook, but size is different, cowardly refusing to remove.");
   process.exit();
 }
 
